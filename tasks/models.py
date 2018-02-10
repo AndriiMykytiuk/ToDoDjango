@@ -29,8 +29,7 @@ class Task(models.Model):
         :return: True if task has been completed as indicated by a truthy
         value for complete_time. Otherwise, False.
         """
-        return bool(
-            self.complete_time and self.complete_time < timezone.now())
+        return bool(self.complete_time and self.complete_time < timezone.now())
 
     @property
     def due_soon(self):
@@ -38,8 +37,7 @@ class Task(models.Model):
         Checks if a task is due soon.
         :return: True if task is due within two days. Otherwise, False.
         """
-        return bool(
-            self.complete_time < (timezone.now() - timezone.timedelta(days = 2)))
+        return bool(self.complete_time < (timezone.now() - timezone.timedelta(days = 2)))
 
     def mark_complete(self):
         """
