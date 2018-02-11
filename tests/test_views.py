@@ -23,6 +23,15 @@ class HomeViewTestCase(TestCase):
         response = self.client.get(self.url)
         self.assertRedirects(response, reverse('tasks'))
 
+    def test_new_user_has_no_tasks(self):
+        self.client.login(username=self.username, password=self.password)
+        response = self.client.get(self.url, follow=True)
+        self.assertEqual(len(response.context['tasks']), 0)
+        self.assertInHTML(
+            '<p>You currently have no tasks.</p>',
+            response.content.decode('utf8')
+        )
+
 
 class RegisterViewTest(TestCase):
 
