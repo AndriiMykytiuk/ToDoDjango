@@ -22,8 +22,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '%2$5dw(q(tjw0*g%oz5*^5k!3trm27_vs(braq%qq6_cmg0z)p'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -39,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'widget_tweaks',
     'tasks',
-    'django_jenkins',
 ]
 
 MIDDLEWARE = [
@@ -73,13 +70,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'todo.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
-import dj_database_url
-DATABASES = {'default': dj_database_url.config(default='postgres://andrii@localhost:5432/todo_data')}
 
 
 # Password validation
