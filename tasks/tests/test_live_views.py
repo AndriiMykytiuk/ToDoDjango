@@ -14,7 +14,8 @@ class TestStaticLiveServer(StaticLiveServerTestCase):
         options = webdriver.ChromeOptions()
         options.add_argument('headless')
         options.add_argument('window-size=1200x600')
-        cls.selenium = webdriver.Chrome(chrome_options=options)
+        cls.selenium = webdriver.Chrome(
+                                        chrome_options=options)
         cls.selenium.implicitly_wait(30)
 
 
