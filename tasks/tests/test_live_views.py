@@ -1,5 +1,6 @@
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium.webdriver.chrome.webdriver import WebDriver
+from selenium import webdriver
 from autofixture import AutoFixture
 from django.contrib.auth.models import User
 from tasks.models import Task
@@ -10,8 +11,12 @@ class TestStaticLiveServer(StaticLiveServerTestCase):
     @classmethod
     def setUpClass(cls):
         super(TestStaticLiveServer, cls).setUpClass()
-        cls.selenium = WebDriver()
+        options = webdriver.ChromeOptions()
+        options.add_argument('headless')
+        options.add_argument('window-size=1200x600')
+        cls.selenium = webdriver.Chrome(chrome_options=options)
         cls.selenium.implicitly_wait(30)
+
 
     @classmethod
     def tearDownClass(cls):
